@@ -1,0 +1,265 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Refined Solarized Light Theme - Monochromatic with Blue Accents --- */
+:root {
+    /* Base Solarized Palette */
+    --base03:  #002b36; /* Darkest */
+    --base02:  #073642;
+    --base01:  #586e75; /* Dark Gray - Muted Text */
+    --base00:  #657b83; /* Medium Gray - Body Text */
+    --base0:   #839496; /* Light Gray - Borders, Subtle Accents */
+    --base1:   #93a1a1; /* Lighter Gray - Subtle Borders, Disabled Elements */
+    --base2:   #eee8d5; /* Off-white - Content Background */
+    --base3:   #fdf6e3; /* Lightest Off-white - Main Background */
+
+    /* Solarized Accents */
+    --yellow:  #b58900;
+    --orange:  #cb4b16;
+    --red:     #dc322f;
+    --magenta: #d33682;
+    --violet:  #6c71c4;
+    --blue:    #268bd2; /* Primary Accent */
+    --cyan:    #2aa198;
+    --green:   #859900;
+
+    /* --- Theme Mapping --- */
+    --bg-color: var(--base3);           /* Lightest background */
+    --content-bg-color: var(--base2);   /* Content area background */
+    --text-color: var(--base00);        /* Primary text (medium gray) */
+    --muted-text-color: var(--base01);  /* Muted text (darker gray) */
+    --accent-text-color: var(--base02); /* Headers, strong text (darkest gray) */
+    --border-color: var(--base1);       /* Subtle light gray border */
+    --accent-color: var(--blue);        /* Blue for primary accents (e.g., underlines) */
+    --button-bg: var(--blue);           /* Blue button */
+    --button-text: var(--base3);        /* Lightest text on button */
+    --button-hover-bg: var(--violet);   /* Violet hover for buttons */
+    --link-color: var(--blue);          /* Blue links */
+    --link-hover-color: var(--violet);  /* Violet link hover */
+    --code-bg: var(--base3);            /* Use main background for code block */
+    --code-border: var(--base1);        /* Subtle border for code */
+    --code-text-color: var(--base01);   /* Dark gray code text */
+
+    /* Table Colors - UPDATED */
+    --table-header-bg: var(--base1);    /* Light gray table header */
+    --table-header-text: var(--base02); /* Darkest gray header text */
+    --table-row-bg: var(--base2);       /* Default row background (content bg) */
+    --table-row-builtin-bg: var(--base3); /* Muted row background (main bg) */
+    --table-row-error-bg: var(--base3); /* Muted row background for errors too */
+    --table-row-spacing: 3px;           /* Space between rows */
+
+    /* Status Colors (Mapped to Solarized Accents) */
+    --status-found-color: var(--green);
+    --status-notfound-color: var(--red);
+    --status-error-color: var(--red);
+    --status-builtin-color: var(--base01); /* Muted dark gray */
+    --status-unknown-color: var(--base01); /* Muted dark gray */
+
+    /* Safety Likelihood Colors (Mapped to Solarized Accents) */
+    --safety-safe-color: var(--green);
+    --safety-caution-color: var(--yellow);
+    --safety-potential-risk-color: var(--orange);
+    --safety-high-risk-color: var(--red);
+    --safety-unknown-color: var(--blue);
+    --safety-builtin-color: var(--base01);
+
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background-color: var(--content-bg-color);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    flex-grow: 1;
+    position: relative;
+}
+
+/* --- Dropdown Styles (Keep as is) --- */
+.dropdown { position: absolute; top: 15px; right: 15px; z-index: 100; }
+.menu-icon { cursor: pointer; padding: 5px; background-color: var(--base3); border-radius: 50%; border: 1px solid var(--border-color); transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.menu-icon:hover { transform: scale(1.05); box-shadow: 0 0 5px var(--blue); }
+.menu-icon img { display: block; width: 40px; height: 40px; border-radius: 50%; }
+.dropdown-content { display: none; position: absolute; right: 0; top: calc(100% + 5px); background-color: var(--bg-color); min-width: 180px; box-shadow: 0px 6px 12px rgba(0, 43, 54, 0.15); border: 1px solid var(--border-color); border-radius: 4px; z-index: 101; }
+.dropdown-content.active { display: block; }
+.dropdown-content a { color: var(--text-color); padding: 10px 15px; text-decoration: none; display: block; font-size: 0.9em; white-space: nowrap; transition: background-color 0.15s ease, color 0.15s ease; }
+.dropdown-content a:hover { background-color: var(--blue); color: var(--base3); }
+.dropdown-content a.close-btn { text-align: center; font-style: italic; color: var(--muted-text-color); border-top: 1px dashed var(--border-color); margin-top: 5px; padding-top: 8px; padding-bottom: 8px; }
+.dropdown-content a.close-btn:hover { color: var(--red); background-color: transparent; }
+
+/* --- Header, Form, Button Styles (Keep mostly as is) --- */
+header { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--accent-color); margin-top: 50px; }
+header h1 { color: var(--accent-text-color); text-align: center; margin-bottom: 10px; font-weight: 700; font-size: 1.8em; }
+header p { color: var(--muted-text-color); font-size: 0.95em; text-align: center; margin-bottom: 8px; }
+.disclaimer { font-size: 0.85em; background-color: var(--base3); padding: 12px 15px; border-radius: 4px; margin-top: 15px; border: 1px solid var(--border-color); color: var(--muted-text-color); }
+.disclaimer strong { color: var(--accent-text-color); }
+section { margin-bottom: 30px; }
+label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--accent-text-color); }
+textarea { width: 100%; padding: 12px; border: 1px solid var(--code-border); border-radius: 4px; font-family: monospace; font-size: 0.9em; background-color: var(--code-bg); color: var(--code-text-color); resize: vertical; min-height: 200px; transition: min-height 0.3s ease-out, background-color 0.3s ease; }
+textarea:focus { outline: none; border-color: var(--blue); background-color: var(--base2); }
+textarea.collapsed { min-height: 50px !important; height: 50px; overflow: hidden; }
+button { display: block; width: 100%; padding: 12px 20px; margin-top: 15px; background-color: var(--button-bg); color: var(--button-text); border: none; border-radius: 4px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; }
+button:active:not(:disabled) { transform: scale(0.98); }
+button:hover:not(:disabled) { background-color: var(--button-hover-bg); }
+button:disabled { opacity: 0.6; cursor: not-allowed; background-color: var(--base1); color: var(--base01); }
+
+/* --- Results Section - Table Styling Overhaul --- */
+#results-section h2 {
+    color: var(--accent-text-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+#results-output {
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+#results-output p:first-child {
+    color: var(--muted-text-color);
+}
+
+#results-output table {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 0.9em;
+    border-collapse: collapse; /* Keep collapsed */
+    border-spacing: 0; /* Ensure no extra space */
+    /* Remove outer table border */
+}
+
+#results-output th,
+#results-output td {
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+    /* Remove individual cell borders */
+    border: none;
+    /* Add transparent/bg-colored bottom border for spacing */
+    border-bottom: var(--table-row-spacing) solid var(--bg-color);
+}
+
+#results-output th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+    color: var(--table-header-text);
+    white-space: nowrap;
+    position: sticky; /* Optional: make header sticky */
+    top: 0;           /* Optional: make header sticky */
+    z-index: 10;      /* Optional: ensure header above rows */
+}
+
+/* Default row background */
+#results-output tbody tr td {
+    background-color: var(--table-row-bg);
+    /* Inherit text color */
+}
+
+/* Remove bottom border from the very last row's cells */
+#results-output tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* --- Row-Specific Styling --- */
+
+/* Built-in Rows - Background Color Based */
+.row-builtin td {
+    background-color: var(--table-row-builtin-bg); /* Use muted background */
+    color: var(--status-builtin-color); /* Muted text color */
+    font-style: italic;
+}
+/* Remove opacity from the row itself */
+.row-builtin {
+    /* opacity property removed */
+}
+.row-builtin .package-link-icon {
+    opacity: 0; /* Hide icon completely */
+    cursor: default;
+}
+
+
+/* Error Detail Rows - Background Color Based */
+.error-details td {
+    background-color: var(--table-row-error-bg); /* Use muted background */
+    color: var(--status-error-color); /* Keep red text */
+    font-style: italic;
+    font-size: 0.9em;
+    padding-left: 20px !important; /* Keep indentation */
+    /* Remove border-top and border-bottom rules */
+}
+
+/* Ensure error details following built-in rows also get the muted background */
+.row-builtin + .error-details td {
+     background-color: var(--table-row-builtin-bg); /* Match the preceding built-in row */
+}
+
+/* --- Link Icon & Status/Safety Colors (Keep as is) --- */
+.package-link-icon { display: inline-block; font-size: 1.3em; text-decoration: none; color: var(--link-color); opacity: 0.9; transition: opacity 0.2s ease, color 0.2s ease; line-height: 1; padding: 0 5px; }
+.package-link-icon:hover { opacity: 1; color: var(--link-hover-color); }
+.package-link-icon.no-link { opacity: 0.3; cursor: default; pointer-events: none; color: var(--base1); }
+
+.status-found { color: var(--status-found-color); font-weight: 600; }
+.status-not-found { color: var(--status-notfound-color); font-weight: 600; }
+.status-error { color: var(--status-error-color); font-weight: 600; }
+.status-builtin { color: var(--status-builtin-color); font-weight: normal; /* Italic applied via .row-builtin td */ }
+.status-unknown { color: var(--status-unknown-color); font-weight: normal; font-style: italic; }
+
+.safety-likely-safe { color: var(--safety-safe-color); }
+.safety-use-caution { color: var(--safety-caution-color); font-weight: 500; }
+.safety-potential-risk { color: var(--safety-potential-risk-color); font-weight: 500; }
+.safety-high-risk { color: var(--safety-high-risk-color); font-weight: 600; }
+.safety-unknown { color: var(--safety-unknown-color); font-style: italic;}
+.safety-builtin { color: var(--safety-builtin-color); /* Italic applied via .row-builtin td */ }
+
+/* --- Loading Indicator (Keep as is) --- */
+#loading-indicator { display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px; color: var(--muted-text-color); min-height: 50px; margin-top: 10px; }
+#loading-indicator p { margin-bottom: 10px; font-style: italic; }
+.spinner { border: 4px solid var(--base1); border-top: 4px solid var(--blue); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- Footer (Keep as is) --- */
+footer { text-align: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border-color); color: var(--muted-text-color); font-size: 0.85em; width: 100%; flex-shrink: 0; position: relative; float: none; box-sizing: border-box; clear: both; }
+
+/* --- Responsive (Adjust spacing if needed) --- */
+@media (max-width: 600px) {
+    main { margin: 10px; padding: 15px; }
+    .dropdown { top: 10px; right: 10px; }
+    .menu-icon img { width: 35px; height: 35px; }
+     header { margin-top: 45px; }
+    header h1 { font-size: 1.4em; }
+    textarea { min-height: 150px; }
+    textarea.collapsed { min-height: 40px !important; height: 40px; }
+    #results-output table,
+    #results-output th,
+    #results-output td { font-size: 0.8em; padding: 8px 10px; } /* Adjust padding */
+     #results-output th:first-child,
+    #results-output td:first-child { width: 35px; padding-left: 4px; padding-right: 4px; }
+}
+
+/* --- Column Widths (Keep as is) --- */
+#results-output th:first-child,
+#results-output td:first-child {
+    width: 40px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}

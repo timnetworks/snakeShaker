@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snakeShaker - a python package verifier.</title>
+    <meta name="description" content="Shake out potential risks in Python packages. Verify imports against PyPI & Libraries.io for safety insights before you get bitten!">
+    <!-- Theme Color for Browser UI -->
+    <meta name="theme-color" content="#268bd2">
+    <meta name="msapplication-TileColor" content="#268bd2">
+    <meta name="msapplication-TileImage" content="/snake_lg.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://snake.timnetworks.net/">
+    <meta property="og:title" content="snakeShaker - Python Package Verifier">
+    <meta property="og:description" content="Shake out potential risks in Python packages. Verify imports against PyPI & Libraries.io for safety insights.">
+    <meta property="og:image" content="https://snake.timnetworks.net/snake_lg.png">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
+    <meta property="og:image:alt" content="snakeShaker Logo - A stylized snake">
+    <meta property="og:site_name" content="snakeShaker">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://snake.timnetworks.net/">
+    <meta name="twitter:title" content="snakeShaker - Python Package Verifier">
+    <meta name="twitter:description" content="Shake out potential risks in Python packages. Verify imports against PyPI & Libraries.io for safety insights.">
+    <meta name="twitter:image" content="https://snake.timnetworks.net/snake_lg.png">
+    <meta name="twitter:image:alt" content="snakeShaker Logo - A stylized snake">
+    <!-- Optional: <meta name="twitter:site" content="@twitterHandle"> -->
+    <!-- Optional: <meta name="twitter:creator" content="@twitterHandle"> -->
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any"> <!-- Legacy ICO -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/snake.png"> <!-- Standard PNG -->
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg"> --> <!-- Add if you have an SVG icon -->
+    <link rel="apple-touch-icon" sizes="256x256" href="/snake_lg.png"> <!-- Apple Touch Icon -->
+    <!-- Apple Mobile Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="snakeShaker">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <!-- Dropdown Menu Added -->
+        <div class="dropdown">
+            <div class="menu-icon" id="dropdown-btn" title="Menu">
+                <img src="https://snake.timnetworks.net/snake.png" alt="Menu">
+            </div>
+            <div id="dropdown-menu" class="dropdown-content">
+                <a target="_blank" rel="noopener noreferrer" href="https://timnetworks.com">🤌 timnetworks.com</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/timnetworks/snakeShaker">👉 GitHub Project</a>
+                <a href="javascript:void(0)" class="close-btn" id="dropdown-close-btn">close</a>
+            </div>
+        </div>
+        <!-- End Dropdown Menu -->
+
+        <header>
+            <h1>snakeShaker: Python Package Verifier</h1>
+            <p>Paste your Python code below. We'll identify imported packages and check their status... don't get bitten!</p>
+            <p>(Basic support for JavaScript (npm) and PHP (Packagist) imports is also included.)</p>
+            <p class="disclaimer"><strong>Disclaimer:</strong> This tool uses regular expressions and heuristics (educated guesses!) based on package age and registry status. It is <strong>not</strong> a comprehensive security scanner or a guarantee of safety. Always perform your own due diligence before trusting unfamiliar code.</p>
+        </header>
+
+        <section>
+            <form id="code-form">
+                <label for="code-input">Code Snippet:</label>
+                <textarea id="code-input" name="code" rows="15" placeholder="Enter your Python code here (e.g., import requests)..." required></textarea>
+                <!-- Button Text Changed -->
+                <button type="submit" id="submit-btn">shake it before you play with it</button>
+            </form>
+        </section>
+
+        <section id="results-section" aria-live="polite">
+             <!-- Heading Text Changed -->
+            <h2>Snakes in the Grass:</h2>
+            <div id="loading-indicator" style="display: none;">
+                 <!-- Spinner Text Changed -->
+                <p>hissing, please wait...</p>
+                <div class="spinner"></div>
+            </div>
+            <div id="results-output">
+                <!-- Initial message set by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer Emoji Kept -->
+        <p>🐍 Shaken, not stirred, with Gemini.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>

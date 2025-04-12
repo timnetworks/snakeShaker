@@ -1,0 +1,26 @@
+{
+  "name": "snakeShaker - Python Package Verifier",
+  "short_name": "snakeShaker",
+  "description": "Shake out potential risks in Python packages. Verify imports against PyPI & Libraries.io for safety insights.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf6e3",
+  "theme_color": "#268bd2",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/snake.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/snake_lg.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "scope": "/",
+  "lang": "en-US"
+}
